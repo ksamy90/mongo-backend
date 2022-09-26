@@ -22,6 +22,16 @@ app.post("/users", (req, res) => {
     });
 });
 
+app.get("/users", (req, res) => {
+  User.find({})
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
+
 app.listen(port, () => {
   console.log("Server is up on port " + port);
 });
